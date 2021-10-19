@@ -1,0 +1,56 @@
+{
+  "private": true,
+  "name": "@league/react-components",
+  "description": "",
+  "license": "MIT",
+  "scripts": {
+    "start": "dumi dev",
+    "docs:build": "dumi build",
+    "docs:deploy": "gh-pages -d docs-dist",
+    "build": "father-build",
+    "deploy": "npm run docs:build && npm run docs:deploy",
+    "release": "npm run build && npm publish",
+    "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\"",
+    "test": "umi-test",
+    "test:coverage": "umi-test --coverage"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "browserslist": [
+    "last 2 versions",
+    "Firefox ESR",
+    "> 1%",
+    "ie >= 11"
+  ],
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,jsx,less,md,json}": [
+      "prettier --write"
+    ],
+    "*.ts?(x)": [
+      "prettier --parser=typescript --write"
+    ]
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.0",
+    "@types/react-dom": "^16.9.0",
+    "@umijs/test": "^3.5.0",
+    "antd": "^4.0.0",
+    "babel-plugin-import": "^1.13.0",
+    "dumi": "^1.1.0",
+    "father-build": "^1.20.0",
+    "gh-pages": "^3.0.0",
+    "lerna": "^4.0.0",
+    "lerna-changelog": "^2.0.0",
+    "lint-staged": "^11.0.0",
+    "prettier": "^2.0.0",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "typescript": "^4.0.0",
+    "webpack": "^5.0.0",
+    "yorkie": "^2.0.0"
+  }
+}
