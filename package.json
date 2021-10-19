@@ -10,6 +10,8 @@
     "build": "father-build",
     "deploy": "npm run docs:build && npm run docs:deploy",
     "release": "npm run build && npm publish",
+    "lint": "eslint --cache --ext .js,.jsx,.ts,.tsx  --fix --format=pretty ./packages && npm run lint:prettier",
+    "lint:prettier": "npm run prettier &&  git diff && prettier --version && prettier --check \"packages/**/**.{js,jsx,tsx,ts,less,md,json}\" --end-of-line auto",
     "prettier": "prettier --write \"**/*.{js,jsx,tsx,ts,less,md,json}\"",
     "test": "umi-test",
     "test:coverage": "umi-test --coverage"
@@ -27,20 +29,39 @@
     "pre-commit": "lint-staged"
   },
   "lint-staged": {
-    "*.{js,jsx,less,md,json}": [
+    "*.{js,jsx}": [
+      "eslint --fix",
       "prettier --write"
     ],
-    "*.ts?(x)": [
+    "*.{ts,tsx}": [
+      "eslint --fix",
       "prettier --parser=typescript --write"
+    ],
+    "*.less": [
+      "stylelint --syntax less --fix",
+      "prettier --write"
+    ],
+    "*.{json,md}": [
+      "prettier --write"
     ]
   },
   "devDependencies": {
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
+    "@typescript-eslint/eslint-plugin": "^4.0.0",
+    "@typescript-eslint/parser": "^4.0.0",
     "@umijs/test": "^3.5.0",
     "antd": "^4.0.0",
     "babel-plugin-import": "^1.13.0",
     "dumi": "^1.1.0",
+    "eslint": "^7.0.0",
+    "eslint-config-airbnb": "^18.0.0",
+    "eslint-config-prettier": "^8.0.0",
+    "eslint-plugin-import": "^2.0.0",
+    "eslint-plugin-jest": "^24.0.0",
+    "eslint-plugin-jsx-a11y": "^6.0.0",
+    "eslint-plugin-react": "^7.0.0",
+    "eslint-plugin-react-hooks": "^4.0.0",
     "father-build": "^1.20.0",
     "gh-pages": "^3.0.0",
     "lerna": "^4.0.0",
@@ -49,6 +70,13 @@
     "prettier": "^2.0.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
+    "stylelint": "^13.0.0",
+    "stylelint-config-prettier": "^8.0.0",
+    "stylelint-config-rational-order": "^0.1.2",
+    "stylelint-config-standard": "^22.0.0",
+    "stylelint-no-unsupported-browser-features": "^5.0.0",
+    "stylelint-order": "^4.0.0",
+    "stylelint-scss": "^3.18.0",
     "typescript": "^4.0.0",
     "webpack": "^5.0.0",
     "yorkie": "^2.0.0"

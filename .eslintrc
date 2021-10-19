@@ -1,0 +1,76 @@
+{
+  "root": true,
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true,
+    "jest": true
+  },
+  "extends": [
+    "airbnb",
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "plugin:jest/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "plugins": ["jest", "react-hooks", "@typescript-eslint"],
+  "rules": {
+    "no-console": ["error", { "allow": ["warn", "error"] }],
+    "import/extensions": "off",
+    "sort-imports": ["error", { "ignoreDeclarationSort": true }],
+    // 类型导入支持尚不友好，期望类型导入也支持基本组，例如：builtin, external, internal 等等
+    // https://github.com/import-js/eslint-plugin-import/issues/2172
+    "import/order": [
+      "error",
+      {
+        "groups": ["builtin", "external", "internal", "parent", "sibling", "index", "type"],
+        "pathGroups": [
+          {
+            "pattern": "+(react|react-dom|webpack)",
+            "group": "builtin",
+            "position": "before"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": [],
+        "alphabetize": { "order": "asc", "caseInsensitive": false }
+      }
+    ],
+    "import/no-unresolved": [
+      "error",
+      {
+        "commonjs": false,
+        // 忽略模块别名以解除 import/no-unresolved 误报，当然还可以使用 import/resolver
+        // https://github.com/benmosher/eslint-plugin-import/blob/v2.20.2/README.md#resolvers
+        "ignore": ["^\\.+/*"]
+      }
+    ],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": ["tests/**", "scripts/**", "mocks/**", "*.config*.{js,ts}"]
+      }
+    ],
+    "jsx-a11y/click-events-have-key-events": "off",
+    "react/prop-types": "off",
+    "react/jsx-sort-props": [
+      "error",
+      { "reservedFirst": true, "shorthandFirst": true, "callbacksLast": true }
+    ],
+    "react/jsx-props-no-spreading": "off",
+    "react/jsx-filename-extension": ["error", { "extensions": [".tsx"] }],
+    "react-hooks/rules-of-hooks": "error",
+    // https://github.com/typescript-eslint/typescript-eslint/issues/2540#issuecomment-692866111
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-use-before-define": "error",
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "no-shadow": "off",
+    "@typescript-eslint/no-shadow": ["error", { "ignoreTypeValueShadow": true }]
+  }
+}
