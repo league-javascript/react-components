@@ -20,10 +20,12 @@
     "packages/*"
   ],
   "browserslist": [
+    "> 0.5%",
     "last 2 versions",
     "Firefox ESR",
-    "> 1%",
-    "ie >= 11"
+    "not dead",
+    "not op_mini all",
+    "ie > 10"
   ],
   "gitHooks": {
     "pre-commit": "lint-staged"

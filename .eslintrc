@@ -48,13 +48,13 @@
         "commonjs": false,
         // 忽略模块别名以解除 import/no-unresolved 误报，当然还可以使用 import/resolver
         // https://github.com/benmosher/eslint-plugin-import/blob/v2.20.2/README.md#resolvers
-        "ignore": ["^\\.+/*"]
+        "ignore": ["^@league/*", "^\\.+/*"]
       }
     ],
     "import/no-extraneous-dependencies": [
       "error",
       {
-        "devDependencies": ["tests/**", "scripts/**", "mocks/**", "*.config*.{js,ts}"]
+        "devDependencies": ["tests/**", "scripts/**"]
       }
     ],
     "jsx-a11y/click-events-have-key-events": "off",
