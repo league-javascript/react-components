@@ -77,7 +77,7 @@ export default (): React.ReactElement => {
       <Button icon={<PlusOutlined />} type="primary" onClick={() => setVisible(true)}>
         New
       </Button>
-      <DrawerForm size="small" visible={visible} onVisibleChange={setVisible}>
+      <DrawerForm visible={visible} onVisibleChange={setVisible}>
         <FormItem
           bordered
           label="Name"
