@@ -7,6 +7,7 @@
   "plugins": ["stylelint-order", "stylelint-scss", "stylelint-no-unsupported-browser-features"],
   "rules": {
     "at-rule-no-unknown": null,
+    "function-name-case": ["lower", { "ignoreFunctions": ["/colorPalette/"] }],
     "selector-class-pattern": [
       "^([a-z][a-z0-9]*)(-[a-z0-9]+)*$",
       { "resolveNestedSelectors": true }
