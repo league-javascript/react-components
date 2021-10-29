@@ -1,0 +1,18 @@
+@import '~antd/lib/style/themes/index.less';
+
+@drawer-prefix-cls: ~'@{ant-prefix}-drawer';
+
+.@{drawer-prefix-cls} {
+  &-form &-footer {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+
+    .@{ant-prefix}-btn + .@{ant-prefix} {
+      &-btn-group,
+      &-btn:not(.@{ant-prefix}-dropdown-trigger) {
+        margin-left: @margin-md;
+      }
+    }
+  }
+}

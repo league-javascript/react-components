@@ -1,0 +1,57 @@
+@import '~antd/lib/style/themes/index.less';
+
+// TODO: 向 ant-design PR 后可删除
+@input-border-width: @border-width-base;
+@input-border-style: @border-style-base;
+@input-border-radius-base: @border-radius-base;
+
+.size(@font-size; @input-height; @input-padding-horizontal) {
+  .@{form-prefix-cls}-item-bordered .@{form-prefix-cls}-item {
+    @height: @input-height - @input-border-width * 2;
+
+    &-label {
+      padding-left: @input-padding-horizontal;
+
+      > label {
+        height: @height;
+      }
+
+      + .@{form-prefix-cls}-item-control .@{ant-prefix} {
+        &-switch:only-child {
+          margin-right: @input-padding-horizontal;
+        }
+      }
+    }
+
+    &-control-input {
+      min-height: @height;
+
+      .@{ant-prefix} {
+        &-select-selector {
+          height: @height;
+        }
+      }
+    }
+  }
+
+  .@{form-prefix-cls}-item-label > label,
+  .@{ant-prefix}-input,
+  .@{ant-prefix}-picker-input > input,
+  .@{ant-prefix}-radio-wrapper,
+  .@{ant-prefix}-checkbox-wrapper,
+  .@{ant-prefix}-select,
+  .@{ant-prefix}-cascader-picker {
+    font-size: @font-size;
+  }
+}
+
+.active(@color) {
+  & when (@theme = dark) {
+    border-color: @color;
+  }
+  & when not (@theme = dark) {
+    border-color: ~`colorPalette('@{color}', 5) `;
+  }
+
+  box-shadow: @input-outline-offset @outline-blur-size @outline-width fade(@color, @outline-fade);
+}

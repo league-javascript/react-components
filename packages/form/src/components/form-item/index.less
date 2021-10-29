@@ -1,0 +1,122 @@
+@import '~antd/lib/style/themes/index.less';
+@import './mixin.less';
+
+@form-prefix-cls: ~'@{ant-prefix}-form';
+
+.@{form-prefix-cls} {
+  .size(@font-size-base; @input-height-base; @input-padding-horizontal-base);
+
+  &-item .@{ant-prefix} {
+    &-input-number:only-child,
+    &-picker:only-child {
+      width: 100%;
+    }
+  }
+
+  &-item-bordered {
+    position: relative;
+    background-color: @input-bg;
+    border: @input-border-width @input-border-style @input-border-color;
+    border-radius: @input-border-radius-base;
+    transition: all 0.3s;
+
+    &.@{form-prefix-cls}-item {
+      &-focused {
+        .active(@primary-6);
+      }
+
+      &-has-error {
+        border-color: @error-color;
+
+        &.@{form-prefix-cls}-item-focused {
+          .active(@error-color);
+        }
+      }
+
+      &-has-warning {
+        border-color: @warning-color;
+
+        &.@{form-prefix-cls}-item-focused {
+          .active(@warning-color);
+        }
+      }
+
+      &-with-help {
+        margin-bottom: @form-item-margin-bottom;
+      }
+    }
+
+    .@{form-prefix-cls}-item {
+      &-explain {
+        position: absolute;
+        top: 100%;
+      }
+
+      &-label + .@{form-prefix-cls}-item-control .@{ant-prefix} {
+        &-input,
+        &-input-number,
+        &-input-number-input,
+        &-input-affix-wrapper,
+        &-picker,
+        &-mentions,
+        &-mentions > textarea,
+        &-mentions-measure,
+        &-cascader-picker-label,
+        &-select-selector,
+        &-color-picker {
+          padding-left: 0;
+        }
+
+        &-select-selector-placeholder,
+        &-color-picker-placeholder,
+        &-select-selection-search {
+          left: 0;
+        }
+
+        &-switch:only-child {
+          float: right;
+        }
+      }
+    }
+
+    .@{ant-prefix} {
+      &-input,
+      &-input-group-addon,
+      &-input-number,
+      &-input-affix-wrapper,
+      &-picker,
+      &-cascader-picker,
+      &-mentions,
+      &-select-selector {
+        background: transparent;
+        border: none !important;
+        outline: none;
+      }
+
+      &-input:focus,
+      &-input-number-focused,
+      &-input-affix-wrapper-focused,
+      &-picker-focused,
+      &-mentions-focused,
+      &-cascader-picker:focus .@{ant-prefix}-cascader-input,
+      &-select-focused .@{ant-prefix}-select-selector {
+        box-shadow: none !important;
+      }
+    }
+  }
+
+  &-small {
+    .size(@font-size-sm; @input-height-sm; @input-padding-horizontal-sm);
+
+    .@{form-prefix-cls}-item-bordered .@{form-prefix-cls}-item {
+      &-label,
+      &-control {
+        line-height: normal;
+      }
+    }
+  }
+
+  &-large {
+    .size(@font-size-lg; @input-height-lg; @input-padding-horizontal-lg);
+  }
+}

@@ -37,5 +37,9 @@
     "antd": "4.x",
     "react": ">=16.9.0",
     "react-dom": ">=16.9.0"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^4.0.0",
+    "classnames": "^2.3.0"
   }
 }
