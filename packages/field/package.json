@@ -1,0 +1,41 @@
+{
+  "name": "@league/field",
+  "description": "A field with ant design style.",
+  "version": "0.0.1",
+  "license": "MIT",
+  "keywords": [
+    "league",
+    "react",
+    "ant-design",
+    "field"
+  ],
+  "contributors": [
+    "kayson <kayson@huida.cn>"
+  ],
+  "bugs": "https://github.com/league-javascript/react-components/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/league-javascript/react-components"
+  },
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib",
+    "es",
+    "dist"
+  ],
+  "browserslist": [
+    "> 0.5%",
+    "last 2 versions",
+    "Firefox ESR",
+    "not dead",
+    "not op_mini all",
+    "ie > 10"
+  ],
+  "peerDependencies": {
+    "antd": "4.x",
+    "react": ">=16.9.0",
+    "react-dom": ">=16.9.0"
+  }
+}
