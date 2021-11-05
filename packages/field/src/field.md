@@ -5,6 +5,7 @@ nav:
   path: /components
 group:
   title: 通用
+  order: 0
 ---
 
 # Field 字段
