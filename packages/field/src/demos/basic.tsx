@@ -29,6 +29,9 @@ export default (): ReactElement => {
         <Descriptions.Item label="Password">
           <Field defaultValue="password" plain={plain} readOnly={readOnly} type="password" />
         </Descriptions.Item>
+        <Descriptions.Item label="Digit">
+          <Field defaultValue={1000} plain={plain} readOnly={readOnly} type="digit" />
+        </Descriptions.Item>
         <Descriptions.Item label="Money">
           <Field defaultValue={1000} plain={plain} readOnly={readOnly} type="money" />
         </Descriptions.Item>
