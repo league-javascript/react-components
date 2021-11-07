@@ -1,18 +1,20 @@
-import React, { useState } from 'react';
+import React, { ReactElement, useState } from 'react';
 import Field from '@league/field';
-import { Descriptions, Radio, Space, Switch } from 'antd';
+import { Descriptions, Space, Switch } from 'antd';
 
-export default () => {
-  const [mode, setMode] = useState<'read' | 'edit'>('read');
+export default (): ReactElement => {
+  const [readOnly, setReadOnly] = useState<boolean>(true);
   const [plain, setPlain] = useState(false);
 
   return (
     <>
-      <Space>
-        <Radio.Group value={mode} onChange={e => setMode(e.target.value)}>
-          <Radio value="read">Read-only</Radio>
-          <Radio value="edit">Editable</Radio>
-        </Radio.Group>
+      <Space size="large" style={{ marginBottom: 24 }}>
+        <Switch
+          checked={readOnly}
+          checkedChildren="Read-only"
+          unCheckedChildren="Editable"
+          onChange={setReadOnly}
+        />
         <Switch
           checked={plain}
           checkedChildren="Plain"
@@ -20,15 +22,15 @@ export default () => {
           onChange={setPlain}
         />
       </Space>
-      <Descriptions colon column={2}>
+      <Descriptions column={2} contentStyle={{ paddingRight: 24 }}>
         <Descriptions.Item label="Text">
-          <Field mode={mode} plain={plain} type="text" value="This is a text." />
+          <Field defaultValue="This is a text." plain={plain} readOnly={readOnly} type="text" />
         </Descriptions.Item>
         <Descriptions.Item label="Password">
-          <Field mode={mode} plain={plain} type="password" value="password" />
+          <Field defaultValue="password" plain={plain} readOnly={readOnly} type="password" />
         </Descriptions.Item>
         <Descriptions.Item label="Money">
-          <Field mode={mode} plain={plain} type="money" value={1000} />
+          <Field defaultValue={1000} plain={plain} readOnly={readOnly} type="money" />
         </Descriptions.Item>
       </Descriptions>
     </>

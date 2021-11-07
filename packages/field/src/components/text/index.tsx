@@ -1,15 +1,24 @@
-import React, { ForwardRefRenderFunction, forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 import { Input, InputProps } from 'antd';
-import type { FieldProps } from '../../typings';
+import type { FieldFC, FieldProps as Props } from '../../typings';
 
-export type TextProps = Omit<InputProps, keyof FieldProps> & FieldProps<string>;
+export type TextProps = Omit<InputProps, keyof Props> & Props<string>;
 
-const Text: ForwardRefRenderFunction<any, TextProps> = ({ mode, value, ...props }, ref) => {
-  if (mode === 'edit') {
-    return <Input allowClear autoComplete="off" {...props} ref={ref} value={value} />;
+const Text: FieldFC<TextProps> = ({ defaultValue, readOnly, value, ...props }, ref) => {
+  if (readOnly) {
+    return <span ref={ref}>{value === undefined ? defaultValue : value}</span>;
   }
 
-  return <>{value}</>;
+  return (
+    <Input
+      allowClear
+      autoComplete="off"
+      {...props}
+      ref={ref}
+      defaultValue={defaultValue}
+      value={value}
+    />
+  );
 };
 
 export default forwardRef(Text);

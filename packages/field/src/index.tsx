@@ -4,7 +4,7 @@ import Password, { PasswordProps } from './components/password';
 import Text, { TextProps } from './components/text';
 import type { FieldProps as Props } from './typings';
 
-type F<T extends string, P extends Props> = { type: T } & P;
+type F<T extends string, P extends Props> = { type: T } & Omit<P, 'type'>;
 
 export type FieldProps =
   | F<'money', MoneyProps>
@@ -14,7 +14,7 @@ export type FieldProps =
 const Field: ForwardRefRenderFunction<unknown, FieldProps> = ({ type, ...props }, ref) => {
   switch (type) {
     case 'money':
-      return <Money {...(props as MoneyProps)} />;
+      return <Money {...(props as MoneyProps)} ref={ref} />;
     case 'password':
       return <Password {...(props as PasswordProps)} ref={ref} />;
     case 'text':

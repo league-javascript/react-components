@@ -1,17 +1,17 @@
-import React, { ForwardRefRenderFunction, forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 import { InputNumber, InputNumberProps } from 'antd';
-import type { FieldProps } from '../../typings';
+import type { FieldFC, FieldProps as Props } from '../../typings';
 
-export interface MoneyProps extends InputNumberProps<number>, FieldProps<number> {
+export interface MoneyProps extends Omit<InputNumberProps, keyof Props>, Props<string | number> {
   locale?: string;
 }
 
-const Money: ForwardRefRenderFunction<any, MoneyProps> = ({ mode, value, ...props }, ref) => {
-  if (mode === 'edit') {
-    return <InputNumber {...props} ref={ref} value={value} />;
+const Money: FieldFC<MoneyProps> = ({ defaultValue, readOnly, value, ...props }, ref) => {
+  if (readOnly) {
+    return <span ref={ref}>{value === undefined ? defaultValue : value}</span>;
   }
 
-  return <>{value}</>;
+  return <InputNumber {...props} ref={ref} defaultValue={defaultValue} value={value} />;
 };
 
 export default forwardRef(Money);

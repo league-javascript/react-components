@@ -1,19 +1,18 @@
-import React, { ForwardRefRenderFunction, forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 import { Input } from 'antd';
-import type { FieldProps } from '../../typings';
+import type { FieldFC, FieldProps as Props } from '../../typings';
 import type { PasswordProps as InputProps } from 'antd/lib/input';
 
-export type PasswordProps = InputProps & FieldProps<string>;
+export interface PasswordProps extends Omit<InputProps, keyof Props>, Props<string> {}
 
-const Password: ForwardRefRenderFunction<unknown, PasswordProps> = (
-  { value, mode, ...props },
-  ref,
-) => {
-  if (mode === 'edit') {
-    return <Input.Password allowClear {...props} ref={ref} value={value} />;
+const Password: FieldFC<PasswordProps> = ({ defaultValue, readOnly, value, ...props }, ref) => {
+  if (readOnly) {
+    return <span ref={ref}>{value === undefined ? defaultValue : value}</span>;
   }
 
-  return <>{value}</>;
+  return (
+    <Input.Password allowClear {...props} ref={ref} defaultValue={defaultValue} value={value} />
+  );
 };
 
 export default forwardRef(Password);
