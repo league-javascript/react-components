@@ -1,4 +1,5 @@
 import React, { ForwardRefRenderFunction, forwardRef } from 'react';
+import Boolean, { BooleanProps } from './components/boolean';
 import Digit, { DigitProps } from './components/digit';
 import Money, { MoneyProps } from './components/money';
 import Password, { PasswordProps } from './components/password';
@@ -8,6 +9,7 @@ import type { FieldProps as Props } from './typings';
 type F<T extends string, P extends Props> = { type: T } & Omit<P, 'type'>;
 
 export type FieldProps =
+  | F<'boolean', BooleanProps>
   | F<'digit', DigitProps>
   | F<'money', MoneyProps>
   | F<'password', PasswordProps>
@@ -15,6 +17,8 @@ export type FieldProps =
 
 const Field: ForwardRefRenderFunction<unknown, FieldProps> = ({ type, ...props }, ref) => {
   switch (type) {
+    case 'boolean':
+      return <Boolean {...(props as BooleanProps)} ref={ref} />;
     case 'digit':
       return <Digit {...(props as DigitProps)} ref={ref} />;
     case 'money':

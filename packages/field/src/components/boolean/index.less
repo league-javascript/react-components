@@ -1,0 +1,26 @@
+@import '~antd/lib/style/themes/index.less';
+
+@switch-prefix-cls: ~'@{ant-prefix}-switch';
+
+.@{switch-prefix-cls} {
+  &-plain {
+    min-width: 0;
+    height: auto;
+    color: @error-color;
+    line-height: auto;
+    background: transparent;
+    border-radius: 0;
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+
+  &-checked&-plain {
+    color: @success-color;
+  }
+
+  &-readonly {
+    pointer-events: none;
+  }
+}

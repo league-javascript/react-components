@@ -35,6 +35,9 @@ export default (): ReactElement => {
         <Descriptions.Item label="Money">
           <Field defaultValue={1000} plain={plain} readOnly={readOnly} type="money" />
         </Descriptions.Item>
+        <Descriptions.Item label="Boolean">
+          <Field defaultValue={false} plain={plain} readOnly={readOnly} type="boolean" />
+        </Descriptions.Item>
       </Descriptions>
     </>
   );
