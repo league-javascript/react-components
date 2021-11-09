@@ -4,7 +4,7 @@ import type { FieldFC, FieldProps as Props } from '../../typings';
 
 export type TextProps = Omit<InputProps, keyof Props> & Props<string>;
 
-const Text: FieldFC<TextProps> = ({ defaultValue, readOnly, value, ...props }, ref) => {
+const Text: FieldFC<TextProps> = ({ defaultValue, plain: _, readOnly, value, ...props }, ref) => {
   if (readOnly) {
     return <span ref={ref}>{value === undefined ? defaultValue : value}</span>;
   }
