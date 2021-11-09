@@ -60,6 +60,7 @@ const Password: FieldFC<PasswordProps> = (
   return (
     <Input
       allowClear
+      autoComplete="off"
       {...props}
       ref={ref}
       className={classNames(prefixCls, className, { [`${prefixCls}-${size}`]: !!size })}
